@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 /*
  *  Created by Jay
  */
-public class ExtractionExampleDemo {
+public class BookingExtration {
 
     static ValidatableResponse response;
 
@@ -22,9 +22,17 @@ public class ExtractionExampleDemo {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         response = given()
                 .when()
-                .get("/booking/1")
+                .get("/booking/42")
                 .then().statusCode(200);
     }
+
+
+    @Test
+    public void test01(){
+        System.out.println("The First name value is : " + response.extract().path("John"));
+    }
+
+
 
 
     // 1) Extract the value of limit

@@ -1,7 +1,7 @@
 package com.restful.booker.crudtest;
 
 
-import com.restful.booker.model.Pojo;
+import com.restful.booker.model.BookingPojo;
 import com.restful.booker.testbase.TestBase;
 import com.restful.booker.utils.TestUtils;
 import io.restassured.http.ContentType;
@@ -32,7 +32,7 @@ public class CrudTest extends TestBase {
         courseList.add("Java");
         courseList.add("Rest Assured");
 
-        Pojo Pojo = new Pojo();
+        BookingPojo Pojo = new BookingPojo();
         Pojo.setFirstName(firstName);
         Pojo.setLastName(lastName);
         Pojo.setEmail(email);

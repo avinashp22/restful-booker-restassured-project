@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.*;
 /**
  * Created by Jay
  */
-public class AssertionExampleDemo {
+public class BookingAssertion {
 
     static ValidatableResponse response;
 
@@ -20,9 +20,16 @@ public class AssertionExampleDemo {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         response = given()
                 .when()
-                .get("/booking/1")
+                .get("/booking/42")
                 .then().statusCode(200);
     }
+
+
+    @Test
+    public void test01() {
+        response.body("", hasKey("totalprice"));
+    }
+
 
 
     // 1) Verify that the products of limit is equal to 10
