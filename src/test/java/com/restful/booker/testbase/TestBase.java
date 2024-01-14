@@ -9,7 +9,6 @@ public class TestBase {
     @BeforeClass
     public void inIt() {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
-        RestAssured.port = 8081;
         RestAssured.basePath = "/booking";
     }
 }
