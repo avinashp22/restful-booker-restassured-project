@@ -20,70 +20,70 @@ public class BookingAssertion {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         response = given()
                 .when()
-                .get("/booking/42")
+                .get("/booking/1")
                 .then().statusCode(200);
     }
 
 
+
+
     @Test
-    public void test01() {
-        response.body("", hasKey("totalprice"));
+    public void tes001() {
+        response.body(".", hasKey("firstname"));
     }
 
 
-
-    // 1) Verify that the products of limit is equal to 10
-    @Test
-    public void test001() {
-        response.body("limit", equalTo(10));
-    }
-
-    // 2) Verify that the products of total is = 51957
     @Test
     public void test002() {
-        //Homework
+
+        response.body(".", hasKey("lastname"));
     }
 
-    // 3) Check the Name 'Duracell - AA Batteries (8-Pack)' is available in List of product's name
+
     @Test
     public void test003() {
-        response.body("data.name", hasItem("Duracell - AA Batteries (8-Pack)"));
+
+        response.body(".", hasKey("totalprice"));
     }
 
-    // 4) Check Multiple Names (Energizer - MAX Batteries AA (4-Pack), Duracell - 9V Batteries (2-Pack)) are available in list of product's name
+
+
     @Test
     public void test004() {
-        //Homework
+
+        response.body(".", hasKey("depositpaid"));
     }
 
-    // 5) Verify the 'name' field inside first categories map for the first data (Checking Values inside Map using hasKey(entityType))
+
+
     @Test
     public void test005() {
-        response.body("data[0].categories[0]", hasKey("name"));
+        response.body("bookingdates", hasKey("checkin"));
 
     }
 
-    // 6) Check entry 'manufacturer = Energizer' is inside map of product name is 'Energizer - N Cell E90 Batteries (2-Pack)'
+
+
     @Test
     public void test006() {
-        response.body("data.findAll{it.name == 'Energizer - N Cell E90 Batteries (2-Pack)'}", hasItem(hasEntry("manufacturer", "Energizer")));
+
+        response.body("bookingdates", hasKey("checkout"));
 
     }
 
-    // 7) Checking multiple values in the same statement
+
+
     @Test
     public void test007() {
-        response.body("limit", equalTo(10))
-                .body("data.name", hasItem("Duracell - AA Batteries (8-Pack)"))
-                .body("data[0].categories[0]", hasKey("name"));
+
+        response.body("booking.findAll{it.firstname==1130}.totalprice",equalTo(111));
+
     }
 
-    // 8) Logical Assertions
     @Test
     public void test008() {
-        response.body("limit",equalTo(10))
-                .body("limit", lessThan(11))
-                .body("limit", greaterThan(9))
-                .body("limit", greaterThanOrEqualTo(10));
+        response.body(".", hasKey("bookingdates"));
+
     }
+
 }
