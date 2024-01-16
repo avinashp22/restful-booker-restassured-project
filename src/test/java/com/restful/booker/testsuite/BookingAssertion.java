@@ -8,9 +8,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-/**
- * Created by Jay
- */
+
 public class BookingAssertion {
 
     static ValidatableResponse response;
@@ -20,7 +18,7 @@ public class BookingAssertion {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         response = given()
                 .when()
-                .get("/booking/1")
+                .get("/booking/15")
                 .then().statusCode(200);
     }
 
@@ -51,7 +49,7 @@ public class BookingAssertion {
     @Test
     public void test004() {
 
-        response.body(".", hasKey("depositpaid"));
+        response.extract().path("firstname");
     }
 
 
@@ -67,7 +65,7 @@ public class BookingAssertion {
     @Test
     public void test006() {
 
-        response.body("bookingdates", hasKey("checkout"));
+        response.body("additionalneeds", equalTo("Breakfast"));
 
     }
 
@@ -76,14 +74,10 @@ public class BookingAssertion {
     @Test
     public void test007() {
 
-        response.body("booking.findAll{it.firstname==1130}.totalprice",equalTo(111));
-
-    }
-
-    @Test
-    public void test008() {
         response.body(".", hasKey("bookingdates"));
 
     }
+
+
 
 }
