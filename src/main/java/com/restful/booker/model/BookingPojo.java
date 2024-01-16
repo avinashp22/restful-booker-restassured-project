@@ -10,6 +10,10 @@ public class BookingPojo {
     private boolean depositpaid;
     private HashMap<String,String> bookingdates;
     private String additionalneeds;
+    private String checkIn;
+    private String checkOut;
+
+
 
     public String getFirstname() {
         return firstname;
@@ -57,5 +61,21 @@ public class BookingPojo {
 
     public void setAdditionalneeds(String additionalneeds) {
         this.additionalneeds = additionalneeds;
+    }
+
+    public String getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(String checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public String getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(String checkOut) {
+        this.checkOut = checkOut;
     }
 }
