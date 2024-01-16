@@ -8,18 +8,16 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-
 public class AuthCrudTest {
 
     @BeforeClass
-    public static void inIt(){
+    public static void inIt() {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         RestAssured.basePath = "/auth";
     }
 
-
     @Test
-    public void verifyTokenreatedSuccessfully() {
+    public void T1verifyTokenreatedSuccessfully() {
 
         AuthPojo authPojo = new AuthPojo();
         authPojo.setUsername("admin");
@@ -33,10 +31,5 @@ public class AuthCrudTest {
                         .post();
         response.prettyPrint();
         response.then().statusCode(200);
-
     }
-
-
-
-
 }

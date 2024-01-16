@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-
 public class BookingAssertion {
 
     static ValidatableResponse response;
@@ -22,62 +21,38 @@ public class BookingAssertion {
                 .then().statusCode(200);
     }
 
-
-
-
     @Test
     public void tes001() {
         response.body(".", hasKey("firstname"));
     }
 
-
     @Test
     public void test002() {
-
         response.body(".", hasKey("lastname"));
     }
 
-
     @Test
     public void test003() {
-
         response.body(".", hasKey("totalprice"));
     }
 
-
-
     @Test
     public void test004() {
-
         response.extract().path("firstname");
     }
-
-
 
     @Test
     public void test005() {
         response.body("bookingdates", hasKey("checkin"));
-
     }
-
-
 
     @Test
     public void test006() {
-
         response.body("additionalneeds", equalTo("Breakfast"));
-
     }
-
-
 
     @Test
     public void test007() {
-
         response.body(".", hasKey("bookingdates"));
-
     }
-
-
-
 }

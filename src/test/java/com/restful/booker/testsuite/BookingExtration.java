@@ -10,7 +10,6 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-
 public class BookingExtration {
 
     static ValidatableResponse response;
@@ -24,14 +23,12 @@ public class BookingExtration {
                 .then().statusCode(200);
     }
 
-
     @Test
     public void test001() {
         String FirstName = response.extract().path("firstname");
         System.out.println("------------------StartingTest---------------------------");
         System.out.println("The First Name is : " + FirstName);
         System.out.println("------------------End of Test---------------------------");
-
     }
 
     @Test
@@ -40,7 +37,6 @@ public class BookingExtration {
         System.out.println("------------------StartingTest---------------------------");
         System.out.println("The last name is : " + lastName);
         System.out.println("------------------End of Test---------------------------");
-
     }
 
     @Test
@@ -49,7 +45,6 @@ public class BookingExtration {
         System.out.println("------------------StartingTest---------------------------");
         System.out.println("The price is : " + price);
         System.out.println("------------------End of Test---------------------------");
-
     }
 
     @Test
@@ -58,16 +53,14 @@ public class BookingExtration {
         System.out.println("------------------StartingTest---------------------------");
         System.out.println("The deposit paid is : " + depositpaid);
         System.out.println("------------------End of Test---------------------------");
-
     }
 
     @Test
     public void test005() {
-        HashMap<String , Object> dates = response.extract().path("bookingdates");
+        HashMap<String, Object> dates = response.extract().path("bookingdates");
         System.out.println("------------------StartingTest---------------------------");
         System.out.println("The dates are : " + dates);
         System.out.println("------------------End of Test---------------------------");
-
     }
 
     @Test
@@ -76,19 +69,13 @@ public class BookingExtration {
         System.out.println("------------------StartingTest---------------------------");
         System.out.println("The needs is : " + needs);
         System.out.println("------------------End of Test---------------------------");
-
     }
 
     @Test
-    public void test007()
-    {
+    public void test007() {
         List<Integer> bookingId = response.extract().path("bookingid");
         System.out.println("------------------StartingTest---------------------------");
-        System.out.println("The size is : "+ bookingId);
+        System.out.println("The size is : " + bookingId);
         System.out.println("------------------End of Test---------------------------");
-
     }
-
-
-
 }

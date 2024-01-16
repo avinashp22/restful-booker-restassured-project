@@ -10,17 +10,16 @@ import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 
-
 public class BookingCrudTest extends TestBase {
 
     @Test
-    public void averifyBookingCreatedSuccessfully()
-    {
-        String firstName = "Avi"+TestUtils.getRandomValue();
-        String lastName = "Pat"+TestUtils.getRandomValue();
-        HashMap<String,String> bookingDates = new HashMap();
-        bookingDates.put("checkIn" , "2024-08-08");
-        bookingDates.put("checkOut" , "2024-09-09");
+    public void T1verifyBookingCreatedSuccessfully() {
+
+        String firstName = "Avi" + TestUtils.getRandomValue();
+        String lastName = "Pat" + TestUtils.getRandomValue();
+        HashMap<String, String> bookingDates = new HashMap();
+        bookingDates.put("checkIn", "2024-08-08");
+        bookingDates.put("checkOut", "2024-09-09");
         BookingPojo bookingPojo = new BookingPojo();
         bookingPojo.setFirstname(firstName);
         bookingPojo.setLastname(lastName);
@@ -31,8 +30,8 @@ public class BookingCrudTest extends TestBase {
 
         Response response =
                 given()
-                        .header("Content-Type","application/json")
-                        .header("cookie" , "token=849bf08fa57f00b" )
+                        .header("Content-Type", "application/json")
+                        .header("cookie", "token=849bf08fa57f00b")
                         .body(bookingPojo)
                         .when()
                         .post("/booking");
@@ -41,8 +40,7 @@ public class BookingCrudTest extends TestBase {
     }
 
     @Test
-    public void bVerifyBookingReadSuccessfully()
-    {
+    public void T2VerifyBookingReadSuccessfully() {
         Response response = given()
                 .when()
                 .get("/235");  // john smith
@@ -50,15 +48,14 @@ public class BookingCrudTest extends TestBase {
         response.then().statusCode(200);
     }
 
-
     @Test
-    public void cverifyBookingUpdateSuccessfully() {
+    public void T3verifyBookingUpdateSuccessfully() {
 
-        String firstName = "Avi"+TestUtils.getRandomValue();
-        String lastName = "Pat"+TestUtils.getRandomValue();
-        HashMap<String,String>bookingDates = new HashMap();
-        bookingDates.put("checkIn" , "2024-03-03");
-        bookingDates.put("checkOut" , "2024-05-05");
+        String firstName = "Avi" + TestUtils.getRandomValue();
+        String lastName = "Pat" + TestUtils.getRandomValue();
+        HashMap<String, String> bookingDates = new HashMap();
+        bookingDates.put("checkIn", "2024-03-03");
+        bookingDates.put("checkOut", "2024-05-05");
         BookingPojo bookingPojo = new BookingPojo();
         bookingPojo.setFirstname(firstName);
         bookingPojo.setLastname(lastName);
@@ -79,7 +76,7 @@ public class BookingCrudTest extends TestBase {
     }
 
     @Test
-    public void zVerifyBookingDeleteSuccessfully() {
+    public void T4VerifyBookingDeleteSuccessfully() {
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQxMjM=")
@@ -88,6 +85,4 @@ public class BookingCrudTest extends TestBase {
         response.then().statusCode(201);
         response.prettyPrint();
     }
-
-
 }

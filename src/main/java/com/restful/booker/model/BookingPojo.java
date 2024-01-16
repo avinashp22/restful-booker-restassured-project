@@ -13,8 +13,6 @@ public class BookingPojo {
     private String checkIn;
     private String checkOut;
 
-
-
     public String getFirstname() {
         return firstname;
     }
