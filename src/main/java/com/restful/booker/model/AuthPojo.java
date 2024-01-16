@@ -2,17 +2,10 @@ package com.restful.booker.model;
 
 public class AuthPojo {
 
-    private String token;
+
     private String username;
     private String password;
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public String getUsername() {
         return username;
