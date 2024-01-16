@@ -13,7 +13,6 @@ import static io.restassured.RestAssured.given;
 
 public class BookingCrudTest extends TestBase {
 
-
     @Test
     public void averifyBookingCreatedSuccessfully()
     {
@@ -38,7 +37,7 @@ public class BookingCrudTest extends TestBase {
                         .when()
                         .post("/booking");
         response.prettyPrint();
-        response.then().statusCode(404);
+        response.then().statusCode(404);  // only giving 404
     }
 
     @Test
@@ -46,7 +45,7 @@ public class BookingCrudTest extends TestBase {
     {
         Response response = given()
                 .when()
-                .get("/48");
+                .get("/235");  // john smith
         response.prettyPrint();
         response.then().statusCode(200);
     }
@@ -74,8 +73,8 @@ public class BookingCrudTest extends TestBase {
                         .auth().preemptive().basic("admin", "password123")
                         .body(bookingPojo)
                         .when()
-                        .put("/booking/48");
-        response.then().statusCode(404);
+                        .put("/booking/151");
+        response.then().statusCode(404); // only giving 404
         response.prettyPrint();
     }
 
@@ -85,9 +84,10 @@ public class BookingCrudTest extends TestBase {
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQxMjM=")
                 .when()
-                .delete("/48");
+                .delete("/597");
         response.then().statusCode(201);
         response.prettyPrint();
     }
+
 
 }
